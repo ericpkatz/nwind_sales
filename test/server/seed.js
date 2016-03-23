@@ -1,4 +1,4 @@
-var db = require('../../db');
+var db = require('../../server/db');
 var Employee = db.models.Employee;
 
 module.exports = function(){

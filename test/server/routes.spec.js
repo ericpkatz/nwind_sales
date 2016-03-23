@@ -1,5 +1,5 @@
 var app = require('../../server/app');
-var Employee = require('../../db').models.Employee;
+var Employee = require('../../server/db').models.Employee;
 var expect = require('chai').expect;
 
 var request = require('supertest-as-promised')(app);

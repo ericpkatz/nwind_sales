@@ -1,4 +1,4 @@
-var db = require('../../db');
+var db = require('../../server/db');
 var seed = require('./seed');
 var models = db.models;
 var Employee = models.Employee;

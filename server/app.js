@@ -4,6 +4,6 @@ var app = express();
 app.use(bodyParser.json());
 
 
-app.use('/api/employees', require('../routes/employees'));
+app.use('/api/employees', require('./routes/employees'));
 
 module.exports = app;
