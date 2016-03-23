@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var employeeSchema = mongoose.Schema({
-  name: String,
+  name: { type: String, required: true },
   regions: [String]
 });
 
