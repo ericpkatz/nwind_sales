@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/server/**/*.js"
+    "test": "CONN=mongodb://localhost/nwind_sales_test mocha test/server/**/*.js",
+    "test-dev": "CONN=mongodb://localhost/nwind_sales_test nodemon ./node_modules/mocha/bin/mocha test/server/**/*.js"
   },
   "author": "",
   "license": "ISC",
