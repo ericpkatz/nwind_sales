@@ -1,4 +1,5 @@
 var app = require('../../server/app');
+var Employee = require('../../db').models.Employee;
 var expect = require('chai').expect;
 
 var request = require('supertest-as-promised')(app);
@@ -18,18 +19,39 @@ describe('routes', function(){
         });
       
       });
+
       describe('post /api/employees', function(){
         it('can insert an employee', function(){
           return request.post('/api/employees')
-              .send({ name: 'Shep'})
-              .expect(200)
-              .then(function(res){
-                expect(res.body.name).to.equal('Shep');
-              
-              });
+            .send({ name: 'Shep'})
+            .expect(200)
+            .then(function(res){
+              expect(res.body.name).to.equal('Shep');
+            });
         });
-      
       });
+
+      describe('put /api/employees/:id', function(){
+        var moe;
+        beforeEach(function(done){
+          Employee.findOne({ name: 'Moe'})
+            .then(function(_moe){
+              moe = _moe;
+              done();
+            });
+        });
+        it('can update an employee', function(){
+
+          return request.put(`/api/employees/${moe.id}`)
+            .send({ name: 'moo', regions: ['South']})
+            .expect(200)
+            .then(function(res){
+              expect(res.body.name).to.equal('moo');
+              expect(res.body.regions).to.eql(['South']);
+            });
+        });
+      });
+
     });
   });
 });

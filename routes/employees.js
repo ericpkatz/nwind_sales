@@ -17,3 +17,15 @@ router.post('/', function(req, res, next){
       res.send(employee);
     }, next);
 });
+
+router.put('/:id', function(req, res, next){
+  return Employee.findById(req.params.id)
+    .then(function(employee){
+      employee.name = req.body.name;
+      employee.regions = req.body.regions;
+      return employee.save();
+    })
+    .then(function(employee){
+      res.send(employee);
+    }, next);
+});
