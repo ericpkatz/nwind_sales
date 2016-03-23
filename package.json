@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "CONN=mongodb://localhost/nwind_sales_test mocha test/server/**/*.js",
-    "test-dev": "CONN=mongodb://localhost/nwind_sales_test nodemon ./node_modules/mocha/bin/mocha test/server/**/*.js"
+    "test": "karma start && CONN=mongodb://localhost/nwind_sales_test mocha test/server/**/*.js",
+    "test-dev": "karma start && CONN=mongodb://localhost/nwind_sales_test nodemon ./node_modules/mocha/bin/mocha test/server/**/*.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
+    "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-mocha": "^0.2.2",
+    "karma-spec-reporter": "0.0.24",
     "mocha": "^2.4.5",
     "supertest": "^1.2.0",
     "supertest-as-promised": "^3.0.0"
