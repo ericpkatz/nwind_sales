@@ -1,21 +1,48 @@
 angular.module('app')
-  .factory('SalesPerson', function($http){
+  .factory('SalesPerson', function(){
+
     function SalesPerson(data){
       data = data || { name: '', regions: []};
       this.name = data.name;
-      this.setRegionSelector(this.regions);
+      this.regions = data.regions;
+      this._id = data._id;
     }
 
-    SalesPerson.prototype.setRegionSelector = function(regions){
-    
+    SalesPerson.prototype.isValid = function(){
+      return this.name.replace(/ /g, '').length > 0 && this.regions.length > 0;
     };
 
-    SalesPerson.prototype.getRegions = function(){
-    
+    SalesPerson.prototype.notWorking = function(){
+      return this.regions.length === 0;
     };
 
-    SalesPerson.prototype.toggleRegion = function(item){
-      item.selected = !item.selected;
+    SalesPerson.prototype.fullSchedule = function(){
+      return this.regions.length === 3;
+    };
+
+    SalesPerson.prototype.working = function(){
+      return this.regions.length !== 0;
+    };
+
+    SalesPerson.prototype.isNew = function(){
+      return !this._id; 
+    };
+
+    SalesPerson.prototype.regionIdx = function(region){
+      return this.regions.indexOf(region);
+    };
+
+    SalesPerson.prototype.hasRegion = function(region){
+      return this.regionIdx(region) !== -1;
+    };
+
+
+    SalesPerson.prototype.toggleRegion = function(region){
+      var idx = this.regionIdx(region);
+      if(idx === -1)
+        this.regions.push(region);
+      else
+        this.regions.splice(idx, 1);
     };
 
     return SalesPerson;

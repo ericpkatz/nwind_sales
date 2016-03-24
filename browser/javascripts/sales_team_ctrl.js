@@ -1,13 +1,13 @@
 angular.module('app')
-  .controller('SalesTeamCtrl', function($scope, SalesTeam){
-
-    $scope.newEmployee = SalesTeam.newEmployee();
+  .controller('SalesTeamCtrl', function($scope, Regions, SalesTeam, SalesPerson){
+    $scope.regions = Regions();
+    $scope.newEmployee = new SalesPerson();
 
     $scope.createEmployee = function(employee){
-      SalesTeam.insert(employee)
+      SalesTeam.save(employee)
         .then(function(employee){
           $scope.employees.unshift(employee);
-          $scope.newEmployee = SalesTeam.newEmployee();
+          $scope.newEmployee = new SalesPerson(); 
         });
     };
 
@@ -18,9 +18,9 @@ angular.module('app')
         });
     };
 
-    $scope.toggleSelection = function(item, employee){
-      item.selected = !item.selected;
-      SalesTeam.update(employee)
+    $scope.toggleSelection = function(employee, region){
+      employee.toggleRegion(region);
+      SalesTeam.save(employee)
         .then(function(){
         });
     };

@@ -1,10 +1,10 @@
 describe('regions', function(){
   beforeEach(module('app'));
-  var regions;
-  beforeEach(inject(function(_regions_){
-    regions = _regions_;
+  var Regions;
+  beforeEach(inject(function(_Regions_){
+    Regions = _Regions_;
   }));
   it('returns correct data', function(){
-    expect(regions()).to.eql(['North', 'South', 'East', 'West']);
+    expect(Regions()).to.eql(['North', 'South', 'East', 'West']);
   });
 });

@@ -1,5 +1,5 @@
 angular.module('app')
-  .factory('regions', function(){
+  .factory('Regions', function(){
     return function(){
       return [
         'North',
