@@ -15,7 +15,7 @@
           </div>
           <div class='row'>
             <div class='col-xs-3' ng-repeat='item in newEmployee.allRegions' class='list-group-item'>
-              <button class='btn btn-block btn-default' ng-class="{'btn-primary': item.selected }" ng-click='item.selected = !item.selected'>
+              <button class='btn btn-block btn-default btn-xs' ng-class="{'btn-primary': item.selected }" ng-click='item.selected = !item.selected'>
                 {{ item.region }}
               </button>
             </div>
@@ -26,13 +26,13 @@
           <div class='panel-heading'>
             {{ employee.name }}
             <div class='pull-right'>
-              <button class='btn btn-danger btn-small' ng-click='remove(employee, $index)'>Delete</button>
+              <button class='btn-xs btn btn-danger btn-small' ng-click='remove(employee, $index)'>Delete</button>
             </div>
             <br style:'clear:both' />
           </div>
           <div class='panel-body'>
             <div class='col-xs-3' ng-repeat='item in employee.allRegions' class='list-group-item'>
-              <button class='btn btn-block btn-default' ng-class="{'btn-primary': item.selected }" ng-click='toggleSelection(item, employee)'>
+              <button class='btn-xs btn btn-block btn-default' ng-class="{'btn-primary': item.selected }" ng-click='toggleSelection(item, employee)'>
                 {{ item.region }}
               </button>
             </div>
