@@ -19,7 +19,7 @@ router.post('/', function(req, res, next){
 });
 
 router.put('/:id', function(req, res, next){
-  return Employee.findById(req.params.id)
+  return Employee.findOne({ _id: req.params.id })
     .then(function(employee){
       employee.name = req.body.name;
       employee.regions = req.body.regions;

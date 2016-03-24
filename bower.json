@@ -1,0 +1,22 @@
+{
+  "name": "nwind_sales",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Eric P. Katz <ericpkatz@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ericpkatz/nwind_sales",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.2"
+  }
+}

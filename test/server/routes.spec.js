@@ -10,6 +10,16 @@ describe('routes', function(){
       .then(done.bind(null, null));
   
   });
+  describe('/', function(){
+    it('has the title NWind Sales Team', function(){
+      return request.get('/')
+        .expect(200)
+        .then(function(res){
+          expect(res.text).to.contain('NWind Sales Team');
+        
+        });
+    });
+  });
   describe('/api', function(){
     describe('/api/employees', function(){
       describe('get /api/employees', function(){

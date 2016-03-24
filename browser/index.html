@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css'></link>
+    <script src='/angular/angular.js'></script>
+    <script src='/javascripts/app.js'></script>
+    <script src='/javascripts/sales_team_ctrl.js'></script>
+  </head>
+  <body ng-app='app'>
+    <div class='container'>
+    <h2>NWind Sales Team</h2>
+      <div ng-controller='SalesTeamCtrl'>
+        <div ng-repeat='employee in employees' class='panel panel-default'>
+          <div class='panel-heading'>
+            {{ employee.name }}
+          </div>
+          <div class='panel-body'>
+            <div class='col-xs-3' ng-repeat='item in employee.allRegions' class='list-group-item'>
+              <button class='btn btn-block btn-default' ng-class="{'btn-primary': item.selected }" ng-click='toggleSelection(item, employee)'>
+                {{ item.region }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
