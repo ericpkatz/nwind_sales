@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "PORT=3000 CONN=mongodb://localhost/nwind_sales nodemon --ignore 'browser/**/*' server",
-    "test": "karma start && CONN=mongodb://localhost/nwind_sales_test mocha test/server/**/*.js",
+    "test": "bower install && karma start && CONN=mongodb://localhost/nwind_sales_test mocha test/server/**/*.js",
     "test-dev": "karma start && CONN=mongodb://localhost/nwind_sales_test nodemon ./node_modules/mocha/bin/mocha test/server/**/*.js"
   },
   "author": "",
@@ -24,6 +24,7 @@
   "dependencies": {
     "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
+    "bower": "^1.7.7",
     "chalk": "^1.1.1",
     "express": "^4.13.4",
     "mongoose": "^4.4.9"
