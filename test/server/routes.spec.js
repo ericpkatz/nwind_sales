@@ -41,6 +41,25 @@ describe('routes', function(){
         });
       });
 
+      describe('delete /api/employees/:id', function(){
+        var moe;
+        beforeEach(function(done){
+          Employee.findOne({ name: 'Moe'})
+            .then(function(_moe){
+              moe = _moe;
+              done();
+            });
+        });
+
+        it('can delete employee', function(){
+
+          return request.delete(`/api/employees/${moe.id}`)
+            .expect(200)
+            .then(function(res){
+            });
+        });
+      });
+
       describe('put /api/employees/:id', function(){
         var moe;
         beforeEach(function(done){
@@ -50,6 +69,7 @@ describe('routes', function(){
               done();
             });
         });
+
         it('can update an employee', function(){
 
           return request.put(`/api/employees/${moe.id}`)

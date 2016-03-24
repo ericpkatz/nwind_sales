@@ -29,3 +29,13 @@ router.put('/:id', function(req, res, next){
       res.send(employee);
     }, next);
 });
+
+router.delete('/:id', function(req, res, next){
+  return Employee.findOne({ _id: req.params.id })
+    .then(function(employee){
+      return employee.remove();
+    })
+    .then(function(){
+      res.sendStatus(200);
+    }, next);
+});

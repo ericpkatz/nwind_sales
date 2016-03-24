@@ -9,9 +9,26 @@
     <div class='container'>
     <h2>NWind Sales Team</h2>
       <div ng-controller='SalesTeamCtrl'>
+        <div class='well'>
+          <div class='form-group'>
+            <input class='form-control' placeholder='name... ' ng-model='newEmployee.name' />
+          </div>
+          <div class='row'>
+            <div class='col-xs-3' ng-repeat='item in newEmployee.allRegions' class='list-group-item'>
+              <button class='btn btn-block btn-default' ng-class="{'btn-primary': item.selected }" ng-click='item.selected = !item.selected'>
+                {{ item.region }}
+              </button>
+            </div>
+          </div>
+          <button style='margin-top:10px' ng-disabled='!newEmployee.name' class='btn btn-primary' ng-click='createEmployee(newEmployee)'>Save</button>
+        </div>
         <div ng-repeat='employee in employees' class='panel panel-default'>
           <div class='panel-heading'>
             {{ employee.name }}
+            <div class='pull-right'>
+              <button class='btn btn-danger btn-small' ng-click='remove(employee, $index)'>Delete</button>
+            </div>
+            <br style:'clear:both' />
           </div>
           <div class='panel-body'>
             <div class='col-xs-3' ng-repeat='item in employee.allRegions' class='list-group-item'>
