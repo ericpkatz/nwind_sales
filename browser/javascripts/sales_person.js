@@ -13,7 +13,7 @@ angular.module('app')
     };
 
     SalesPerson.prototype.notWorking = function(){
-      return this.regions.length === 0;
+      return !this.working();
     };
 
     SalesPerson.prototype.fullSchedule = function(){
