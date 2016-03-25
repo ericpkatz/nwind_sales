@@ -1,13 +1,17 @@
 angular.module('app')
   .controller('SalesTeamCtrl', function($scope, Regions, SalesTeam, SalesPerson){
+    function setNewEmployee(){
+      $scope.newEmployee = new SalesPerson();
+    }
+
     $scope.regions = Regions();
-    $scope.newEmployee = new SalesPerson();
+    setNewEmployee();
 
     $scope.createEmployee = function(employee){
       SalesTeam.save(employee)
         .then(function(employee){
           $scope.employees.unshift(employee);
-          $scope.newEmployee = new SalesPerson(); 
+          setNewEmployee();
         });
     };
 
