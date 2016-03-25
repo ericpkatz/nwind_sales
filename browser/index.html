@@ -12,32 +12,41 @@
     <div class='container'>
     <h2>NWind Sales Team</h2>
       <div ng-controller='SalesTeamCtrl'>
-        <div class='well'>
-          <div class='form-group'>
-            <input class='form-control' placeholder='employee name' ng-model='newEmployee.name' />
-          </div>
-          <div class='row'>
-            <div class='col-xs-3' ng-repeat='region in regions' class='list-group-item'>
-              <button class='btn btn-block btn-default btn-xs' ng-class="{'btn-primary': newEmployee.hasRegion(region) }" ng-click='newEmployee.toggleRegion(region)' ng-disabled='newEmployee.fullSchedule() && !newEmployee.hasRegion(region)'>
-                {{ region }}
-              </button>
+        <div class='col-xs-4'>
+          <div class='panel panel-default panel-warning'>
+            <div class='panel-heading'>
+              Add a Sales Person
+            </div>
+            <div class='panel-body'>
+              <div class='form-group'>
+                <input class='form-control input-sm' placeholder='employee name' ng-model='newEmployee.name' />
+              </div>
+              <div class='row'>
+                <div class='col-xs-3' ng-repeat='region in regions' class='list-group-item'>
+                  <button class='btn btn-block btn-default btn-xs' ng-class="{'btn-primary': newEmployee.hasRegion(region) }" ng-click='newEmployee.toggleRegion(region)' ng-disabled='newEmployee.fullSchedule() && !newEmployee.hasRegion(region)'>
+                    {{ region }}
+                  </button>
+                </div>
+              </div>
+              <button style='margin-top:10px' ng-disabled='!newEmployee.isValid()' class='btn-sm btn btn-primary' ng-click='createEmployee(newEmployee)'>Save</button>
             </div>
           </div>
-          <button style='margin-top:10px' ng-disabled='!newEmployee.isValid()' class='btn btn-primary' ng-click='createEmployee(newEmployee)'>Save</button>
         </div>
-        <div ng-repeat='employee in employees' class='panel panel-default' ng-class="{ 'panel-danger': employee.notWorking(), 'panel-success' : employee.fullSchedule() }">
-          <div class='panel-heading'>
-            {{ employee.name }}
-            <div class='pull-right'>
-              <button class='btn-xs btn btn-danger btn-small' ng-disabled='employee.working()' ng-click='remove(employee, $index)'>Delete</button>
+        <div class='col-xs-4' ng-repeat='employee in employees' >
+          <div class='panel panel-default' ng-class="{ 'panel-danger': employee.notWorking(), 'panel-success' : employee.fullSchedule() }">
+            <div class='panel-heading'>
+              {{ employee.name }}
+              <div class='pull-right'>
+                <button class='btn-xs btn btn-danger btn-small' ng-disabled='employee.working()' ng-click='remove(employee, $index)'>Delete</button>
+              </div>
+              <br style:'clear:both' />
             </div>
-            <br style:'clear:both' />
-          </div>
-          <div class='panel-body'>
-            <div class='col-xs-3' ng-repeat='region in regions' class='list-group-item'>
-              <button class='btn-xs btn btn-block btn-default' ng-class="{'btn-primary': employee.hasRegion(region) }" ng-click='toggleSelection(employee, region)' ng-disabled='employee.fullSchedule() && !employee.hasRegion(region)'>
-                {{ region }}
-              </button>
+            <div class='panel-body'>
+              <div class='col-xs-3' ng-repeat='region in regions' class='list-group-item'>
+                <button class='btn-xs btn btn-default' ng-class="{'btn-primary': employee.hasRegion(region) }" ng-click='toggleSelection(employee, region)' ng-disabled='employee.fullSchedule() && !employee.hasRegion(region)'>
+                  {{ region }}
+                </button>
+              </div>
             </div>
           </div>
         </div>
