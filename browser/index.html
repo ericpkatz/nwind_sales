@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css'></link>
+    <link rel='stylesheet' href='/css/bootstrap.min.css'></link>
     <script src='/angular/angular.js'></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src='/javascripts/app.js'></script>
@@ -11,9 +11,20 @@
   </head>
   <body ng-app='app'>
     <div class='container'>
-    <h2>NWind Sales Team</h2>
+      <h2>NWind Sales Team</h2>
+      <div class='well'>
+        <ul>
+          <li>Sales person must have name.</li>
+          <li>A sales person can only be inserted if they have one region.</li>
+          <li>A sales person can only be deleted if they have no regions.</li>
+          <li>A sales person with no territories has a red header.</li>
+          <li>A sales person with three territories has a green header.</li>
+          <li>A sales person can have no more than 4 territories.</li>
+          <li>A sales person can have no more than 3 territories.</li>
+        </ul>
+      </div>
       <div ng-controller='SalesTeamCtrl'>
-        <div class='col-xs-4'>
+        <div class='col-sm-4'>
           <div class='panel panel-default panel-warning'>
             <div class='panel-heading'>
               Add a Sales Person
@@ -33,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class='col-xs-4' ng-repeat='employee in employees' ng-show='!employee.hidden'>
+        <div class='col-sm-4' ng-repeat='employee in employees'>
           <div class='panel panel-default' ng-class="{ 'panel-danger': employee.notWorking(), 'panel-success' : employee.fullSchedule() }">
             <div class='panel-heading'>
               {{ employee.name }}
