@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server",
+    "start": "bower install && node server",
     "start-dev": "PORT=3000 CONN=mongodb://localhost/nwind_sales nodemon --ignore 'browser/**/*' server",
     "test": "bower install && karma start && CONN=mongodb://localhost/nwind_sales_test mocha test/server/**/*.js",
     "test-dev": "karma start && CONN=mongodb://localhost/nwind_sales_test nodemon ./node_modules/mocha/bin/mocha test/server/**/*.js"
